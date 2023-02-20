@@ -1,0 +1,19 @@
+{
+  "name": "webforms-react",
+  "version": "0.0.1",
+  "description": "React plugin for strapi webforms",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+   "main": "lib/index.cjs.js",
+    "module": "lib/index.js",
+    "types": "lib/index.d.ts",
+    "sideEffects": false,
+  "author": "EF2",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ef2-digital/webforms/issues"
+  },
+  "homepage": "https://github.com/ef2-digital/webforms#readme"
+}
