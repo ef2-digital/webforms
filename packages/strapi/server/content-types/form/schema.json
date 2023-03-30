@@ -1,0 +1,43 @@
+{
+  "kind": "collectionType",
+  "collectionName": "forms",
+  "info": {
+    "singularName": "form",
+    "pluralName": "forms",
+    "displayName": "form"
+  },
+  "pluginOptions": {
+    "content-manager": {
+      "visible": true
+    },
+    "content-type-builder": {
+      "visible": true
+    }
+  },
+
+  "options": {
+    "draftAndPublish": false,
+    "privateAttributes": ["createdAt", "updatedAt"]
+  },
+
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "fields": {
+      "type": "json"
+    },
+    "submissions": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "plugin::webforms.submission",
+      "mappedBy": "form"
+    },
+    "handlers": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "plugin::webforms.handler",
+      "mappedBy": "form"
+    }
+  }
+}

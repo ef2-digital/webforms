@@ -1,0 +1,46 @@
+{
+    "kind": "collectionType",
+    "collectionName": "handlers",
+    "info": {
+        "singularName": "handler",
+        "pluralName": "handlers",
+        "displayName": "handlers"
+    },
+    "pluginOptions": {
+        "content-manager": {
+            "visible": false
+        },
+        "content-type-builder": {
+            "visible": true
+        }
+    },
+    "options": {
+        "draftAndPublish": false,
+        "privateAttributes": ["createdAt", "updatedAt"]
+    },
+    "attributes": {
+        "identifier": {
+            "type": "string"
+        },
+        "form": {
+            "type": "relation",
+            "relation": "manyToOne",
+            "target": "plugin::webforms.form",
+            "inversedBy": "handlers"
+        },
+        "type": {
+            "type": "enumeration",
+            "enum": [
+                "email",
+                "action",
+                "remote"
+            ]
+        },
+        "data": {
+            "type": "json"
+        },
+        "enabled": {
+            "type": "boolean"
+        }
+    }
+}

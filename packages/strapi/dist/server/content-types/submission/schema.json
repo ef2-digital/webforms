@@ -1,0 +1,32 @@
+{
+    "kind": "collectionType",
+    "collectionName": "submissions",
+    "info": {
+        "singularName": "submission",
+        "pluralName": "submissions",
+        "displayName": "submission"
+    },
+    "pluginOptions": {
+        "content-manager": {
+            "visible": true
+        },
+        "content-type-builder": {
+            "visible": true
+        }
+    },
+    "options": {
+        "draftAndPublish": false,
+        "privateAttributes": ["createdAt", "updatedAt"]
+    },
+    "attributes": {
+        "form": {
+            "type": "relation",
+            "relation": "manyToOne",
+            "target": "plugin::webforms.form",
+            "inversedBy": "submissions"
+        },
+        "submission": {
+            "type": "json"
+        }
+    }
+}
