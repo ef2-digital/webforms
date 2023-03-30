@@ -1,3 +1,3 @@
-# Strapi plugin e-form
+# Web Forms Strapi plugin
 
-A quick description of e-form.
+Coming soon
