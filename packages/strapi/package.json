@@ -1,6 +1,6 @@
 {
     "name": "@ef2/webforms-strapi",
-    "version": "0.0.2",
+    "version": "0.0.3",
     "description": "Strapi Webforms plugin",
     "strapi": {
         "name": "webforms",
@@ -13,12 +13,12 @@
         "@strapi/strapi": "^4.9.0"
     },
     "dependencies": {
-      "react-intl": "^6.2.5"
+        "react-intl": "^6.2.5"
     },
     "devDependencies": {
-      "typescript": "4.6.3"
+        "typescript": "4.6.3"
     },
-     "author": {
+    "author": {
         "name": "EF2"
     },
     "maintainers": [
