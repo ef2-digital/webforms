@@ -1,13 +1,14 @@
 {
-  "name": "webforms-react",
-  "version": "0.0.2",
+  "name": "@ef2/webforms-react",
+  "version": "0.0.3",
   "description": "React plugin for Strapi Web Forms",
   "scripts": {
     "clean": "rimraf dist",
     "prebuild": "npm run clean",
     "build": "tsc",
     "preversion": "npm run build",
-    "postversion": "git push --follow-tags"
+    "postversion": "git push --follow-tags",
+    "publish": "npm publish --access public"
   },
   "files": [
     "src",
