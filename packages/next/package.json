@@ -1,6 +1,6 @@
 {
   "name": "@ef2/webforms-react",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "description": "React plugin for Strapi Web Forms",
   "scripts": {
     "clean": "rimraf dist",
