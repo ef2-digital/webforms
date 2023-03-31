@@ -1,0 +1,7 @@
+{
+    "submit": "Verzenden",
+    "submitting": "Formulier wordt verzonden",
+    "errorMessages": {
+        "required": "{{ field }} is een verplicht veld"
+    }
+}
