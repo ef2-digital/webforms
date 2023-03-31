@@ -1,15 +1,35 @@
 {
   "name": "webforms-react",
-  "version": "0.0.1",
-  "description": "React plugin for strapi webforms",
-  "main": "index.js",
+  "version": "0.0.2",
+  "description": "React plugin for Strapi Web Forms",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "clean": "rimraf dist",
+    "prebuild": "npm run clean",
+    "build": "tsc",
+    "preversion": "npm run build",
+    "postversion": "git push --follow-tags"
   },
-   "main": "lib/index.cjs.js",
-    "module": "lib/index.js",
-    "types": "lib/index.d.ts",
-    "sideEffects": false,
+  "files": [
+    "src",
+    "dist"
+  ],
+  "peerDependencies": {
+    "graphql": "^16.6.0",
+    "graphql-tag": "^2.12.6",
+    "react": "18.2.0",
+    "react-dom": "18.2.0"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-hook-form": "^7.43.1"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.20",
+    "rimraf": "^3.0.2",
+    "tslib": "^2.5.0",
+    "typescript": "^4.8.3"
+  },
   "author": "EF2",
   "license": "ISC",
   "bugs": {
