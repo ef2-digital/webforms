@@ -8,7 +8,7 @@ import {
 } from "react-hook-form";
 import { DynamicControl } from "./DynamicControl";
 import { DynamicFieldData, FieldClassNames } from "./dynamic-control-types";
-import { PropsWithChildren, useEffect, useState } from "react";
+import { PropsWithChildren, ReactNode, useEffect, useState } from "react";
 import ErrorMessage from "./ErrorMessage";
 import getTranslator, { ValidLocale } from "./translations/translator";
 import { postSubmission } from "./utils/fetchers";
@@ -19,6 +19,8 @@ export interface FormProps extends PropsWithChildren {
   fields: DynamicFieldData[];
   classNames?: FieldClassNames;
   endpoint: string;
+  successMessage: ReactNode;
+  errorMessage: ReactNode;
 }
 
 const Form = ({
@@ -28,8 +30,11 @@ const Form = ({
   classNames,
   endpoint,
   children,
+  successMessage,
+  errorMessage,
 }: FormProps) => {
-  const [success, setSuccess] = useState<boolean>(false);
+  const [isSuccess, setSuccess] = useState<boolean>(false);
+  const [isError, setError] = useState<boolean>(false);
   const [translator, setTranslator] = useState<
     (
       key: string,
@@ -57,50 +62,56 @@ const Form = ({
   const formSubmit: SubmitHandler<FieldValues> = async (data) => {
     const response = await postSubmission(endpoint, formId, data);
 
-    setSuccess(true);
+    if (response.errors) {
+      setError(true);
+    }
+
+    return setSuccess(true);
   };
 
+  if (isError) {
+    return <>{errorMessage}</>;
+  }
+
+  if (isSuccess) {
+    return <>{successMessage}</>;
+  }
+
   return (
-    <>
-      {success ? (
-        ""
+    <form onSubmit={handleSubmit(formSubmit)}>
+      <FormProvider {...formMethods}>
+        {fields.map((field, index) => (
+          <div
+            key={`${field.name}-wrapper-${index}`}
+            className={classNames?.inputWrapper}
+          >
+            <label className={classNames?.label} htmlFor={field.name}>
+              {field.label} {field.config?.required && "*"}
+            </label>
+
+            <DynamicControl {...field} classNames={classNames} />
+
+            <ErrorMessage
+              errors={errors}
+              name={field.name}
+              classNames={classNames?.error}
+              translator={translator}
+            />
+          </div>
+        ))}
+      </FormProvider>
+      {children ? (
+        children
       ) : (
-        <form onSubmit={handleSubmit(formSubmit)}>
-          <FormProvider {...formMethods}>
-            {fields.map((field, index) => (
-              <div
-                key={`${field.name}-wrapper-${index}`}
-                className={classNames?.inputWrapper}
-              >
-                <label className={classNames?.label} htmlFor={field.name}>
-                  {field.label} {field.config?.required && "*"}
-                </label>
-
-                <DynamicControl {...field} classNames={classNames} />
-
-                <ErrorMessage
-                  errors={errors}
-                  name={field.name}
-                  classNames={classNames?.error}
-                  translator={translator}
-                />
-              </div>
-            ))}
-          </FormProvider>
-          {children ? (
-            children
-          ) : (
-            <button
-              type="submit"
-              disabled={isSubmitting}
-              className={classNames?.button}
-            >
-              {isSubmitting ? translator("submitting") : translator("submit")}
-            </button>
-          )}
-        </form>
+        <button
+          type="submit"
+          disabled={isSubmitting}
+          className={classNames?.button}
+        >
+          {isSubmitting ? translator("submitting") : translator("submit")}
+        </button>
       )}
-    </>
+    </form>
   );
 };
 
