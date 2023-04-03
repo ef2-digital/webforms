@@ -60,7 +60,15 @@
   "webforms.submissions.submission.title": "View submission",
   "webforms.submissions.submission.info_title": "Submission information",
   "webforms.submissions.submission.info_submission": "Submission data",
-  
+
+  "webforms.dialog.confirm.title": "Confirmation",
+  "webforms.dialog.delete.text": "Are you sure?",
+  "webforms.dialog.cancel": "Cancel",
+  "webforms.dialog.confirm": "Confirm",
+
   "webforms.list.no_results": "No results found",
+  "webforms.list.name": "Name",
+  "webforms.list.creation_date": "Created at",
+
   "webforms.tooltips.enabled": "Toggle active/inactive"
 }

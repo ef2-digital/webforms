@@ -1,38 +1,39 @@
 {
-    "name": "@ef2/webforms-strapi",
-    "version": "0.0.3",
-    "description": "Strapi Webforms plugin",
-    "strapi": {
-        "name": "webforms",
-        "description": "Create dynamic webforms for usage on frontend",
-        "kind": "plugin",
-        "displayName": "Web Forms"
-    },
-    "peerDependencies": {
-        "@strapi/plugin-graphql": "^4.9.0",
-        "@strapi/strapi": "^4.9.0"
-    },
-    "dependencies": {
-        "react-intl": "^6.2.5"
-    },
-    "devDependencies": {
-        "typescript": "4.6.3"
-    },
-    "author": {
-        "name": "EF2"
-    },
-    "maintainers": [
-        {
-            "name": "EF2"
-        }
-    ],
-    "engines": {
-        "node": ">=16.x.x",
-        "npm": ">=6.0.0"
-    },
-    "scripts": {
-        "develop": "tsc -w",
-        "build": "tsc"
-    },
-    "license": "MIT"
+  "name": "@ef2/webforms-strapi",
+  "version": "0.0.3",
+  "description": "Strapi Webforms plugin",
+  "strapi": {
+    "name": "webforms",
+    "description": "Create dynamic webforms for usage on frontend",
+    "kind": "plugin",
+    "displayName": "Web Forms"
+  },
+  "peerDependencies": {
+    "@strapi/plugin-graphql": "^4.9.0",
+    "@strapi/strapi": "^4.9.0",
+    "@strapi/provider-email-sendmail": "^4.9.0"
+  },
+  "dependencies": {
+    "react-intl": "^6.2.5"
+  },
+  "devDependencies": {
+    "typescript": "4.6.3"
+  },
+  "author": {
+    "name": "EF2"
+  },
+  "maintainers": [
+    {
+      "name": "EF2"
+    }
+  ],
+  "engines": {
+    "node": ">=16.x.x",
+    "npm": ">=6.0.0"
+  },
+  "scripts": {
+    "develop": "tsc -w",
+    "build": "tsc"
+  },
+  "license": "MIT"
 }

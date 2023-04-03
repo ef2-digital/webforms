@@ -40,10 +40,10 @@ const SubmissionListItem = ({ item }: SubmissionListItemProps) => {
         </Typography>
       </Td>
       <Td>
-        {item.form
-          ? //@ts-ignore
-            format(parseISO(item.form.createdAt!), "dd-MM-yyyy H:ss")
-          : null}
+        {
+          //@ts-ignore
+          format(parseISO(item.createdAt!), "dd-MM-yyyy HH:mm")
+        }
       </Td>
       <Td>
         <Flex justifyContent="right" alignItems="right">

@@ -15,7 +15,7 @@ export type FormCollectionType = Array<FormType>;
 
 export interface SubmissionType {
   id: number;
-  form: FormType;
+  form?: FormType;
   submission: string;
   createdAt: string;
   updatedAt: string;
@@ -70,8 +70,16 @@ export type HandlerType = {
   id: number;
   identifier: StringAttribute;
   type: HandlerTypeEnum;
-  data: JSONAttribute;
-  enabled: Boolean;
+  data: EmailHandlerDataType;
+  enabled: boolean;
+  service: string;
+};
+
+export type EmailHandlerDataType = {
+  sendTo: string;
+  sendFrom: string;
+  subject: string;
+  message: string;
 };
 
 export type HandlerCollectionType = Array<HandlerType>;

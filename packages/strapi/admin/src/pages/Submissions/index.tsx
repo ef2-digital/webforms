@@ -1,33 +1,15 @@
 import * as React from "react";
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router";
-import { FormContext } from "../../hooks/useWebForm";
 import formRequests from "../../api/form";
-import { Types } from "../../hooks/webFormReducer";
 import Header from "../../components/Form/Header";
 import { useIntl } from "react-intl";
 
 /*
  * Strapi Design system
  */
-import {
-  Box,
-  Divider,
-  Field,
-  FieldInput,
-  FieldLabel,
-  Grid,
-  GridItem,
-  Stack,
-} from "@strapi/design-system";
-import FormFields from "../../components/Form/FormFields";
-import AlertWrapper from "../../components/Layout/AlertWrapper";
-import {
-  FormType,
-  SubmissionCollectionType,
-  SubmissionType,
-} from "../../utils/types";
-import { SubmissionBox } from "../Submission";
+import { Box } from "@strapi/design-system";
+import { FormType, SubmissionCollectionType } from "../../utils/types";
 import SubmissionList from "../../components/Submission/SubmissionList";
 
 const Form = () => {

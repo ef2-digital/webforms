@@ -1,5 +1,5 @@
 import * as React from "react";
-import { BaseHeaderLayout, Box, Button, Link } from "@strapi/design-system";
+import { BaseHeaderLayout, Box, Link } from "@strapi/design-system";
 import { ArrowLeft } from "@strapi/icons";
 import pluginId from "../../pluginId";
 import { useIntl } from "react-intl";

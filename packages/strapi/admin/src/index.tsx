@@ -1,9 +1,6 @@
-import pluginPkg from "../../package.json";
 import pluginId from "./pluginId";
 import Initializer from "./components/Initializer";
 import PluginIcon from "./components/PluginIcon";
-
-const name = pluginPkg.strapi.name;
 
 export default {
   register(app) {
@@ -12,7 +9,7 @@ export default {
       icon: PluginIcon,
       intlLabel: {
         id: `${pluginId}.plugin.name`,
-        defaultMessage: name,
+        defaultMessage: "Web Forms",
       },
       Component: async () => {
         const component = await import(
@@ -21,13 +18,7 @@ export default {
 
         return component;
       },
-      permissions: [
-        // Uncomment to set the permissions of the plugin here
-        // {
-        //   action: '', // the action name should be plugin::plugin-name.actionType
-        //   subject: null,
-        // },
-      ],
+      permissions: [],
     });
     const plugin = {
       id: pluginId,

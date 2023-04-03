@@ -22,6 +22,9 @@
         "identifier": {
             "type": "string"
         },
+        "service": {
+            "type": "string"
+        },
         "form": {
             "type": "relation",
             "relation": "manyToOne",
@@ -30,11 +33,7 @@
         },
         "type": {
             "type": "enumeration",
-            "enum": [
-                "email",
-                "action",
-                "remote"
-            ]
+            "enum": ["email", "action", "remote"]
         },
         "data": {
             "type": "json"

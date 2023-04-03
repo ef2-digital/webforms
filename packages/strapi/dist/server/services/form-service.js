@@ -2,7 +2,9 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = ({ strapi }) => ({
     async getForms() {
-        return await strapi.entityService.findMany("plugin::webforms.form");
+        return await strapi.entityService.findMany("plugin::webforms.form", {
+            sort: "createdAt:desc",
+        });
     },
     async getForm(id) {
         return await strapi.entityService.findOne("plugin::webforms.form", id);
@@ -34,7 +36,10 @@ exports.default = ({ strapi }) => ({
     },
     async getSubmissions(id) {
         return await strapi.entityService.findOne("plugin::webforms.form", id, {
-            populate: { submissions: true },
+            populate: {
+                submissions: true,
+                sort: "createdAt:desc",
+            },
         });
     },
     addForm() {

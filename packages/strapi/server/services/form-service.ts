@@ -2,7 +2,9 @@ import { Strapi } from "@strapi/strapi";
 
 export default ({ strapi }: { strapi: Strapi }) => ({
   async getForms() {
-    return await strapi.entityService.findMany("plugin::webforms.form");
+    return await strapi.entityService.findMany("plugin::webforms.form", {
+      sort: "createdAt:desc",
+    });
   },
 
   async getForm(id) {
@@ -46,7 +48,10 @@ export default ({ strapi }: { strapi: Strapi }) => ({
 
   async getSubmissions(id: number) {
     return await strapi.entityService.findOne("plugin::webforms.form", id, {
-      populate: { submissions: true },
+      populate: {
+        submissions: true,
+        sort: "createdAt:desc",
+      },
     });
   },
 
