@@ -28,7 +28,7 @@ exports.default = ({ strapi }) => ({
         try {
             await strapi.plugins["email"].services.email.send({
                 to: parsedSubmission.sendTo,
-                from: settings.recipients,
+                from: settings.defaulTo,
                 subject: parsedSubmission.subject,
                 html: parsedSubmission.message.replace(",", ""),
             });
