@@ -1,6 +1,6 @@
 {
   "name": "@ef2/webforms-strapi",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Strapi Webforms plugin",
   "strapi": {
     "name": "webforms",

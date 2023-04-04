@@ -60,6 +60,11 @@ const Form = ({
   } = formMethods;
 
   const formSubmit: SubmitHandler<FieldValues> = async (data) => {
+    if (data.honeypot) {
+      setError(true);
+      return false;
+    }
+
     const response = await postSubmission(endpoint, formId, data);
 
     if (response.errors) {
@@ -99,6 +104,15 @@ const Form = ({
             />
           </div>
         ))}
+        <div className="hidden">
+          <DynamicControl
+            defaultValue=""
+            name="honeypot"
+            label=">Don’t fill this out if you're human"
+            type="text"
+            classNames={classNames}
+          />
+        </div>
       </FormProvider>
       {children ? (
         children

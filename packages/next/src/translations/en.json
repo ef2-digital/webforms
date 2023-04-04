@@ -1,7 +1,7 @@
 {
-    "submit": "Submit",
-    "submitting": "Submitting form",
-    "errorMessages": {
-        "required": "{{ field }} is required"
-    }
+  "submit": "Submit",
+  "submitting": "Submitting form",
+  "errorMessages": {
+    "required": "{{ field }} is required"
+  }
 }

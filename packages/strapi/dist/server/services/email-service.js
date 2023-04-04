@@ -30,7 +30,7 @@ exports.default = ({ strapi }) => ({
                 to: parsedSubmission.sendTo,
                 from: parsedSubmission.sendFrom,
                 subject: parsedSubmission.subject,
-                html: parsedSubmission.message,
+                html: parsedSubmission.message.replace(",", ""),
             });
         }
         catch (err) {
@@ -51,7 +51,10 @@ exports.default = ({ strapi }) => ({
                 if (typeof found === "object" &&
                     formattedPlaceholder === "submission.fields") {
                     return Object.keys(found).map((key) => {
-                        return `${key}: ${found[key]} <br />`;
+                        if (key === "honeypot") {
+                            return;
+                        }
+                        return `<strong>${key.charAt(0).toUpperCase() + key.slice(1)}</strong>: ${found[key]}<br />`;
                     });
                 }
                 return found;

@@ -26,6 +26,10 @@ export default ({ strapi }: { strapi: Strapi }) => ({
       return ctx.badRequest("submission is missing");
     }
 
+    if (submission.fields.honeypot) {
+      return ctx.badRequest("honeypot filled");
+    }
+
     const form: FormType = await strapi.entityService.findOne(
       "plugin::webforms.form",
       formId

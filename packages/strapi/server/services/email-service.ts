@@ -1,5 +1,6 @@
 import { Strapi } from "@strapi/strapi";
 import get from "lodash/get";
+
 import {
   FormType,
   HandlerType,
@@ -44,7 +45,7 @@ export default ({ strapi }: { strapi: Strapi }) => ({
         to: parsedSubmission.sendTo,
         from: parsedSubmission.sendFrom,
         subject: parsedSubmission.subject,
-        html: parsedSubmission.message,
+        html: parsedSubmission.message.replace(",", ""),
       });
     } catch (err) {
       console.log(err);
@@ -58,6 +59,7 @@ export default ({ strapi }: { strapi: Strapi }) => ({
         let formattedPlaceholder = placeholder
           .replace("{", "")
           .replace("}", "");
+
         let found = get(to, formattedPlaceholder);
 
         if (!found) {
@@ -69,7 +71,13 @@ export default ({ strapi }: { strapi: Strapi }) => ({
           formattedPlaceholder === "submission.fields"
         ) {
           return Object.keys(found).map((key) => {
-            return `${key}: ${found[key]} <br />`;
+            if (key === "honeypot") {
+              return;
+            }
+
+            return `<strong>${
+              key.charAt(0).toUpperCase() + key.slice(1)
+            }</strong>: ${found[key]}<br />`;
           });
         }
 
