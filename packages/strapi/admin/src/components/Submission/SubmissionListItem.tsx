@@ -48,12 +48,16 @@ const SubmissionListItem = ({ item }: SubmissionListItemProps) => {
       <Td>
         <Flex justifyContent="right" alignItems="right">
           <Stack horizontal={true} spacing={3}>
-            <LinkButton
-              to={`/plugins/${pluginId}/submission/${item.id}`}
-              startIcon={<Eye />}
-            >
-              {formatMessage({ id: "webforms.actions.view" })}
-            </LinkButton>
+            {item.form ? (
+              <LinkButton
+                to={`/plugins/${pluginId}/submission/${item.id}`}
+                startIcon={<Eye />}
+              >
+                {formatMessage({ id: "webforms.actions.view" })}
+              </LinkButton>
+            ) : (
+              <></>
+            )}
           </Stack>
         </Flex>
       </Td>
