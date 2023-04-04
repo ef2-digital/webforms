@@ -14,6 +14,10 @@ export default {
       throw new ForbiddenError("Honeypot filled");
     }
 
+    delete submission.honeypot;
+
+    params.data.submission = JSON.stringify(submission);
+
     return;
   },
 

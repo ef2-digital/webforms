@@ -4,7 +4,7 @@ exports.default = ({ strapi }) => ({
     async getSubmissions() {
         return await strapi.entityService.findMany("plugin::webforms.submission", {
             populate: { form: true },
-            sort: { createdAt: "DESC" },
+            sort: { createdAt: "desc" },
         });
     },
     async storeSubmission(ctx) {

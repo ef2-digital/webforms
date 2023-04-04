@@ -11,6 +11,8 @@ exports.default = {
         if ("honeypot" in submission && submission.honeypot !== "") {
             throw new ForbiddenError("Honeypot filled");
         }
+        delete submission.honeypot;
+        params.data.submission = JSON.stringify(submission);
         return;
     },
     async afterCreate(event) {

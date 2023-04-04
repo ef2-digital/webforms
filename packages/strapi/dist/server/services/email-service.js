@@ -27,10 +27,10 @@ exports.default = ({ strapi }) => ({
         const parsedSubmission = this.parse(handler.data, parsedData);
         try {
             await strapi.plugins["email"].services.email.send({
-                to: parsedSubmission.sendTo,
-                from: settings.defaulTo,
+                to: parsedSubmission.sendTo.split(","),
+                from: settings.defaultFrom,
                 subject: parsedSubmission.subject,
-                html: parsedSubmission.message.replace(",", ""),
+                html: parsedSubmission.message.replace(/,/g, "<br />"),
             });
         }
         catch (err) {
@@ -51,10 +51,7 @@ exports.default = ({ strapi }) => ({
                 if (typeof found === "object" &&
                     formattedPlaceholder === "submission.fields") {
                     return Object.keys(found).map((key) => {
-                        if (key === "honeypot") {
-                            return;
-                        }
-                        return `<strong>${key.charAt(0).toUpperCase() + key.slice(1)}</strong>: ${found[key]}<br />`;
+                        return `<strong>${key.charAt(0).toUpperCase() + key.slice(1)}</strong>: ${found[key]}`;
                     });
                 }
                 return found;

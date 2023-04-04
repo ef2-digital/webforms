@@ -14,7 +14,7 @@ export default ({ strapi }: { strapi: Strapi }) => ({
   async getSubmissions() {
     return await strapi.entityService.findMany("plugin::webforms.submission", {
       populate: { form: true },
-      sort: { createdAt: "DESC" },
+      sort: { createdAt: "desc" },
     });
   },
 
@@ -24,10 +24,6 @@ export default ({ strapi }: { strapi: Strapi }) => ({
 
     if (!formId || Object.keys(submission).length === 0) {
       return ctx.badRequest("submission is missing");
-    }
-
-    if (submission.fields.honeypot) {
-      return ctx.badRequest("honeypot filled");
     }
 
     const form: FormType = await strapi.entityService.findOne(

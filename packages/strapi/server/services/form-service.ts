@@ -49,8 +49,9 @@ export default ({ strapi }: { strapi: Strapi }) => ({
   async getSubmissions(id: number) {
     return await strapi.entityService.findOne("plugin::webforms.form", id, {
       populate: {
-        submissions: true,
-        sort: "createdAt:desc",
+        submissions: {
+          sort: "createdAt:desc",
+        },
       },
     });
   },

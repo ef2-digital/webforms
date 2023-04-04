@@ -42,10 +42,10 @@ export default ({ strapi }: { strapi: Strapi }) => ({
 
     try {
       await strapi.plugins["email"].services.email.send({
-        to: parsedSubmission.sendTo,
-        from: settings.defaulTo,
+        to: parsedSubmission.sendTo.split(","),
+        from: settings.defaultFrom,
         subject: parsedSubmission.subject,
-        html: parsedSubmission.message.replace(",", ""),
+        html: parsedSubmission.message.replace(/,/g, "<br />"),
       });
     } catch (err) {
       console.log(err);
@@ -71,13 +71,9 @@ export default ({ strapi }: { strapi: Strapi }) => ({
           formattedPlaceholder === "submission.fields"
         ) {
           return Object.keys(found).map((key) => {
-            if (key === "honeypot") {
-              return;
-            }
-
             return `<strong>${
               key.charAt(0).toUpperCase() + key.slice(1)
-            }</strong>: ${found[key]}<br />`;
+            }</strong>: ${found[key]}`;
           });
         }
 
